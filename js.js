@@ -47,7 +47,7 @@ function operate(firstNum, operator, secoundNum) {
 }
 
 
-function getNum() {
+function getFirstNum() {
     let finalInputNum = "";
     numbers.forEach((element) => {
         element.addEventListener("click", function (e) {
@@ -55,6 +55,21 @@ function getNum() {
             finalInputNum += inputNum;
             showSection.textContent = finalInputNum;
             inputNumbers.firstNum = finalInputNum;
+            console.log(finalInputNum)
+            console.log(inputNumbers)
+            // finalInputNim is string
+        })
+    });
+}
+
+function getSecNum() {
+    let finalInputNum = "";
+    numbers.forEach((element) => {
+        element.addEventListener("click", function (e) {
+            inputNum = e.target.textContent;
+            finalInputNum += inputNum;
+            showSection.textContent = finalInputNum;
+            inputNumbers.secoundNum = finalInputNum;
             console.log(finalInputNum)
             console.log(inputNumbers)
             // finalInputNim is string
@@ -70,18 +85,22 @@ function getOperator(){
                 case "/":
                     operator = "divide";
                     console.log(operator);
+                    getSecNum()
                     break;
                 case "*":
                     operator = "multiply";
                     console.log(operator);
+                    getSecNum()
                     break;
                 case "-":
                     operator = "subtract";
                     console.log(operator);
+                    getSecNum()
                     break;
                 case "+":
                     operator = "add";
                     console.log(operator);
+                    getSecNum()
                     break;
                 case "=":
                     console.log("moasvi");
@@ -93,7 +112,7 @@ function getOperator(){
 }
 
 
-getNum()
+getFirstNum()
 getOperator()
 
 
