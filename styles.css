@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center; 
+    align-items: center;     
+    height: 100vh;           
+    margin: 0;    
+    box-sizing: border-box;          
+  }
+
+#container {
+    display: flex;
+    flex-direction: column;
+    width: 380px;
+    height: 500px;
+    background-color: black;
+    border: 10px solid rgba(47, 47, 47, 1);
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+button{
+    flex-grow: 1;
+    background-color: beige;
+    border: none;
+    margin: 3px;
+    border-radius: 5%;
+    border: none;
+    font-weight: initial;
+    font-size: 2em;
+    font-family: monospace;
+    color: black;
+    flex: 1;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    background-color: black;
+    flex: 1; /* تا هر ردیف به اندازه‌ی مساوی تقسیم شود */
+}
+
+.num{
+    background-color: #217C7E;
+}
+
+.operators{
+    background-color: #FF8F1F;
+}
+
+.blue{
+    background-color: dodgerblue;
+}
+
+#show{
+    background-color: #b2b9b7;
+    
+    border: 10px solid rgba(47, 47, 47, 1);
+    direction: rtl;
+    padding: 5px;
+    font-size: 5.5em;
+    font-weight: initial;
+    text-shadow: 1.3px 1.3px #383838;
+    box-sizing: border-box; 
+}
+
+#double{
+    flex-grow: 2.2;
+}
+
+

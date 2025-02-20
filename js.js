@@ -19,7 +19,6 @@ function divide(a,b){
 }
 
 function operate(firstNum,operator,secoundNum){
-    let result = 0
     switch(operator){
         case "add":
             add(firstNum,secoundNum);
