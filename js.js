@@ -18,4 +18,21 @@ function divide(a,b){
     return a/b;
 }
 
+function operate(firstNum,operator,secoundNum){
+    let result = 0
+    switch(operator){
+        case "add":
+            add(firstNum,secoundNum);
+            break;
+        case "subtract":
+            subtract(firstNum,secoundNum);
+            break;
+        case "multiply":
+            multiply(firstNum,secoundNum);
+            break;
+        case "divide":
+            divide(firstNum,secoundNum);
+            break;
+    }
+}
 
