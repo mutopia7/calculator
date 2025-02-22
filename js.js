@@ -9,8 +9,12 @@ let numbers = document.querySelectorAll(".num");
 let operators = document.querySelectorAll(".operators");
 let clear = document.querySelector("#ac");
 let flag = true;
+let flagEqual = false;
 
-clear.addEventListener("click", () =>{
+
+
+
+clear.addEventListener("click", () => {
     showSection.textContent = 0;
     inputNumbers.firstNum = 0;
     inputNumbers.secoundNum = 0;
@@ -44,34 +48,29 @@ function operate(firstNum, operator, secoundNum) {
     switch (operator) {
         case "add":
             result = add(first, secound);
-            showSection.textContent = result;
-            inputNumbers.firstNum = result
             break;
         case "subtract":
             result = subtract(first, secound);
-            showSection.textContent = result;
-            inputNumbers.firstNum = result
             break;
         case "multiply":
             result = multiply(first, secound);
-            showSection.textContent = result;
-            inputNumbers.firstNum = result
             break;
         case "divide":
             result = divide(first, secound);
-            showSection.textContent = result;
-            inputNumbers.firstNum = result;
             break;
     }
+    showSection.textContent = result;
+    inputNumbers.firstNum = result;
+    inputNumbers.secoundNum = "";
 }
 
 
-function getFirstNum() {
-    let finalInputNum = "";
+function getFirstNum(resetAfterEquel = "") {
+    let finalInputNum = resetAfterEquel;
     console.log("get first num is run")
     numbers.forEach((element) => {
         element.addEventListener("click", function (e) {
-            if (!flag) {return}; // Preventing the prime number from changing after selecting the operator
+            if (!flag) { return }; // Preventing the prime number from changing after selecting the operator
             inputNum = e.target.textContent;
             finalInputNum += inputNum;
             showSection.textContent = finalInputNum;
@@ -91,15 +90,24 @@ function getSecNum() {
     console.log(`final inpt num at top getsecNum function is ${finalInputNum}`);
     console.log(`secound number at top getsecNum function is ${inputNumbers.secoundNum}`);
     console.log(flag)
-    
+    console.log(`flagequal = ${flagEqual}`)
+
     // copy from all numbers for disconect pre-eventlistener to buttons 
     numbers.forEach((element) => {
         element.replaceWith(element.cloneNode(true));
     });
     numbers = document.querySelectorAll(".num");
     numbers.forEach((element) => {
-        if (flag){return};
         element.addEventListener("click", function (e) {
+            if (flagEqual) {
+                inputNumbers.firstNum = 0;
+                inputNumbers.secoundNum = 0;
+                flag = true;
+                operator = "";
+                flagEqual = false; // ریست مساوی
+                finalInputNum = "";
+                getFirstNum(e.target.textContent)
+            };
             inputNum = e.target.textContent;
             finalInputNum += inputNum;
             showSection.textContent = finalInputNum;
@@ -112,39 +120,43 @@ function getSecNum() {
 }
 
 
-function getOperator(){
+function getOperator() {
     operators.forEach((element) => {
         element.addEventListener("click", function (e) {
-            switch(e.target.textContent){
+            switch (e.target.textContent) {
                 case "/":
                     operator = "divide";
                     console.log(operator);
                     flag = false;
+                    flagEqual = false;
                     getSecNum();
                     break;
                 case "*":
                     operator = "multiply";
                     console.log(operator);
                     flag = false;
+                    flagEqual = false;
                     getSecNum();
                     break;
                 case "-":
                     operator = "subtract";
                     console.log(operator);
                     flag = false;
+                    flagEqual = false;
                     getSecNum();
                     break;
                 case "+":
                     operator = "add";
                     console.log(operator);
                     flag = false;
+                    flagEqual = false;
                     getSecNum();
                     break;
                 case "=":
                     console.log(operator);
                     operate(inputNumbers.firstNum, operator, inputNumbers.secoundNum);
-                    
-                    break
+                    flagEqual = true;
+                    return;
             }
             console.log(e.target.textContent)
         })
