@@ -67,4 +67,14 @@ button{
     flex-grow: 2.2;
 }
 
+.operators:focus{
+    background-color: #ffc183;
+}
 
+.num:active{
+    background-color: #33b9bb;
+}
+
+.blue:active{
+    background-color: rgb(123, 189, 255);
+}
