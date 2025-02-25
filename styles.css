@@ -61,6 +61,7 @@ button{
     font-weight: initial;
     text-shadow: 1.3px 1.3px #383838;
     box-sizing: border-box; 
+    overflow: scroll;
 }
 
 #double{
