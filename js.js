@@ -12,9 +12,7 @@ let flag = true; //for preventing the prime number from changing after selecting
 let flagEqual = false;
 let flagOperator = false;
 
-
-
-clear.addEventListener("click", () => {
+function clearAll(){
     showSection.textContent = 0;
     inputNumbers.firstNum = 0;
     inputNumbers.secoundNum = 0;
@@ -25,7 +23,10 @@ clear.addEventListener("click", () => {
     finalInputNum = "";
     console.log(`first num is : ${inputNumbers.firstNum} | secound num is ${inputNumbers.secoundNum}`)
     getFirstNum()
-})
+}
+
+clear.addEventListener("click", clearAll)
+
 
 function add(a, b) {
     return a + b;
@@ -40,7 +41,12 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    return b !== 0 ? a / b : "Error"; // جلوگیری از تقسیم بر صفر
+    if (b == 0){
+        return "Eror"
+    }
+    else{
+        return a/b;
+    }
 }
 
 function operate(firstNum, operator, secoundNum) {
@@ -71,10 +77,15 @@ function operate(firstNum, operator, secoundNum) {
 
 function getFirstNum(resetAfterEquel = "") {
     let finalInputNum = resetAfterEquel;
-    console.log("get first num is run")
+    console.log("get first num is run");
+    console.log(finalInputNum);
+    showSection.textContent = finalInputNum;
+    inputNumbers.firstNum = finalInputNum;
     numbers.forEach((element) => {
         element.addEventListener("click", function (e) {
-            if (!flag) { return }; // Preventing the prime number from changing after selecting the operator
+            if (!flag) { 
+                console.log("get first num kar nemikone")
+                return }; // Preventing the prime number from changing after selecting the operator
             inputNum = e.target.textContent;
             finalInputNum += inputNum;
             showSection.textContent = finalInputNum;
@@ -105,7 +116,10 @@ function getSecNum() {
                 operator = "";
                 flagEqual = false; // ریست مساوی
                 finalInputNum = "";
+                console.log("madenazar")
+                console.log(e.target.textContent)
                 getFirstNum(e.target.textContent)
+                return;
             };
             inputNum = e.target.textContent;
             finalInputNum += inputNum;
@@ -162,10 +176,11 @@ function getOperator() {
                     break;
                 case "=":
                     console.log(operator);
-                    operate(inputNumbers.firstNum, operator, inputNumbers.secoundNum);
+                    // operate(inputNumbers.firstNum, operator, inputNumbers.secoundNum);
                     flagEqual = true;
                     flagOperator = false;
-                    return;
+                    flag = true;
+                    break;
             }
             console.log(e.target.textContent)
         })
