@@ -1,11 +1,11 @@
 body {
     display: flex;
-    justify-content: center; 
-    align-items: center;     
-    height: 100vh;           
-    margin: 0;    
-    box-sizing: border-box;          
-  }
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 #container {
     display: flex;
@@ -18,7 +18,7 @@ body {
     font-family: monospace;
 }
 
-button{
+button {
     flex-grow: 1;
     background-color: beige;
     border: none;
@@ -32,50 +32,58 @@ button{
     flex: 1;
 }
 
-.row{
+.row {
     display: flex;
     width: 100%;
     background-color: black;
-    flex: 1; /* تا هر ردیف به اندازه‌ی مساوی تقسیم شود */
+    flex: 1;
+    /* تا هر ردیف به اندازه‌ی مساوی تقسیم شود */
 }
 
-.num{
+.num {
     background-color: #217C7E;
 }
 
-.operators{
+.operators {
     background-color: #FF8F1F;
 }
 
-.blue{
+.blue {
     background-color: dodgerblue;
 }
 
-#show{
+#show {
     background-color: #b2b9b7;
-    
+
     border: 10px solid rgba(47, 47, 47, 1);
     direction: rtl;
     padding: 5px;
     font-size: 5.5em;
     font-weight: initial;
     text-shadow: 1.3px 1.3px #383838;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     overflow: scroll;
 }
 
-#double{
+#double {
     flex-grow: 2.2;
 }
 
-.operators:focus{
+.operators:focus {
     background-color: #ffc183;
 }
 
-.num:active{
+.num:active {
     background-color: #33b9bb;
 }
 
-.blue:active{
+.blue:active {
     background-color: rgb(123, 189, 255);
 }
+
+/* #decimal {
+
+    pointer-events: none;
+    
+
+} */

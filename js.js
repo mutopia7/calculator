@@ -8,11 +8,31 @@ let showSection = document.querySelector("#show");
 let numbers = document.querySelectorAll(".num");
 let operators = document.querySelectorAll(".operators");
 let clear = document.querySelector("#ac");
+let decimal = document.querySelector("#decimal")
 let flag = true; //for preventing the prime number from changing after selecting the operator
 let flagEqual = false;
 let flagOperator = false;
 
-function clearAll(){
+
+
+function checkDecimal() {
+    if (showSection.textContent.includes(".")) {
+        decimal.disabled = true;
+        console.log("turm off")
+    } else {
+        decimal.disabled = false;
+        console.log("turn on")
+    }
+}
+
+
+
+
+
+
+
+
+function clearAll() {
     showSection.textContent = 0;
     inputNumbers.firstNum = 0;
     inputNumbers.secoundNum = 0;
@@ -41,11 +61,11 @@ function multiply(a, b) {
 }
 
 function divide(a, b) {
-    if (b == 0){
+    if (b == 0) {
         return "Eror"
     }
-    else{
-        return a/b;
+    else {
+        return a / b;
     }
 }
 
@@ -70,27 +90,27 @@ function operate(firstNum, operator, secoundNum) {
     showSection.textContent = result;
     inputNumbers.firstNum = result;
     inputNumbers.secoundNum = "";
-    console.log(`result is ${result}`)
+    console.log(`result is ${result} and ryp`, typeof (showSection.textContent))
     return result;
 }
 
 
 function getFirstNum(resetAfterEquel = "") {
     let finalInputNum = resetAfterEquel;
+    // decimal.disabled = false;
     console.log("get first num is run");
     console.log(finalInputNum);
     showSection.textContent = finalInputNum;
     inputNumbers.firstNum = finalInputNum;
     numbers.forEach((element) => {
         element.addEventListener("click", function (e) {
-            if (!flag) { 
-                console.log("get first num kar nemikone")
-                return }; // Preventing the prime number from changing after selecting the operator
+            if (!flag) { return }; // Preventing the prime number from changing after selecting the operator
             inputNum = e.target.textContent;
             finalInputNum += inputNum;
             showSection.textContent = finalInputNum;
             inputNumbers.firstNum = finalInputNum;
             console.log(`first number is ${inputNumbers.firstNum}`);
+            checkDecimal();
             return finalInputNum
             // finalInputNum is string
         })
@@ -99,7 +119,7 @@ function getFirstNum(resetAfterEquel = "") {
 
 function getSecNum() {
     let finalInputNum = "";
-    inputNumbers.secoundNum = ""; 
+    inputNumbers.secoundNum = "";
     console.log(`get sec num is run`);
     // copy from all numbers for disconect pre-eventlistener to buttons 
     numbers.forEach((element) => {
@@ -118,6 +138,9 @@ function getSecNum() {
                 finalInputNum = "";
                 console.log("madenazar")
                 console.log(e.target.textContent)
+
+                checkDecimal()
+
                 getFirstNum(e.target.textContent)
                 return;
             };
@@ -125,7 +148,16 @@ function getSecNum() {
             finalInputNum += inputNum;
             showSection.textContent = finalInputNum;
             inputNumbers.secoundNum = finalInputNum;
-            console.log(`secound number is ${inputNumbers.secoundNum}`);
+            console.log(`secound number is ${inputNumbers.secoundNum} and typ`, typeof (showSection.textContent));
+
+            decimal = document.querySelector("#decimal"); // مقداردهی دوباره به دکمه‌ی دسیمال
+            if (showSection.textContent.includes(".")) {
+                decimal.disabled = true;  // غیرفعال کردن دکمه‌ی دسیمال
+            } else {
+                decimal.disabled = false; // فعال کردن دکمه‌ی دسیمال
+            }
+
+
             return finalInputNum
             // finalInputNum is string
         })
@@ -136,7 +168,7 @@ function getSecNum() {
 function getOperator() {
     operators.forEach((element) => {
         element.addEventListener("click", function (e) {
-            if (flagOperator == true){
+            if (flagOperator == true) {
                 operate(inputNumbers.firstNum, operator, inputNumbers.secoundNum);
                 flagOperator = false;
             };
@@ -192,6 +224,8 @@ function getOperator() {
 getFirstNum()
 
 getOperator()
+
+
 
 
 
