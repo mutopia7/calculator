@@ -56,13 +56,17 @@ button {
     background-color: #b2b9b7;
 
     border: 10px solid rgba(47, 47, 47, 1);
-    direction: rtl;
+    /* display: flex;
+    justify-content: flex-end; */
     padding: 5px;
     font-size: 5.5em;
     font-weight: initial;
+    min-width: 0;
     text-shadow: 1.3px 1.3px #383838;
     box-sizing: border-box;
-    overflow: scroll;
+    overflow-x: auto;
+    direction: rtl;
+    white-space: nowrap; /* جلوگیری از رفتن متن به خط بعد */
 }
 
 #double {
