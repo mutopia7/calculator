@@ -112,7 +112,18 @@ function getFirstNum(resetAfterEquel = "") {
                 console.log(" sign run");
                 console.log(`finalInputNum at sign is ${finalInputNum}`)
                 return finalInputNum;
+            };
+
+            if (e.target.textContent === "del") {
+                if(finalInputNum === "" || finalInputNum === "0"){return};
+                finalInputNum = finalInputNum.slice(0, finalInputNum.length -1);
+                showSection.textContent = finalInputNum;
+                inputNumbers.firstNum = finalInputNum;
+                console.log(`del is runing and finalinputnum is ${finalInputNum}`);
+                return finalInputNum;
             }
+
+
             inputNum = e.target.textContent;
             finalInputNum += inputNum;            
             showSection.textContent = finalInputNum;
@@ -165,6 +176,14 @@ function getSecNum() {
                 return finalInputNum;
             }
 
+            if (e.target.textContent === "del") {
+                if(finalInputNum === "" || finalInputNum === "0"){return};
+                finalInputNum = finalInputNum.slice(0, finalInputNum.length -1);
+                showSection.textContent = finalInputNum;
+                inputNumbers.secoundNum = finalInputNum;
+                console.log(`del secnum is runing and finalinputnum is ${finalInputNum}`);
+                return finalInputNum;
+            }
 
             inputNum = e.target.textContent;
             finalInputNum += inputNum;
