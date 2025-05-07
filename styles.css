@@ -55,6 +55,7 @@ button {
 #show {
     background-color: #b2b9b7;
     border: 10px solid rgba(47, 47, 47, 1);
+    line-height: 80px;
     padding: 5px;
     font-size: 5.5em;
     font-weight: initial;

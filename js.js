@@ -260,6 +260,40 @@ function getOperator() {
     });
 }
 
+document.addEventListener("keydown", (e) => {
+    const key = e.key;
+    console.log("You pressed:", e.key);
+
+    // جلوگیری از تایپ مستقیم در صفحه
+    e.preventDefault();
+
+    // اعداد و نقطه
+    if ((/\d/.test(key)) || key === ".") {
+        document.querySelectorAll(".num").forEach(btn => {
+            if (btn.textContent === key) btn.click();
+        });
+    }
+
+ 
+    // مساوی یا Enter
+    if (key === "=" || key === "Enter") {
+        document.querySelector(".operators:last-child").click();
+    }
+
+    // پاک‌کردن (Escape)
+    if (key === "Escape") {
+        document.querySelector("#ac").click();
+    }
+
+    // حذف کاراکتر آخر (Backspace)
+    if (key === "Backspace") {
+        document.querySelector(".num[data-action='del']").click(); // اگر چنین دکمه‌ای داری
+    }
+
+    
+});
+
+
 
 getFirstNum()
 
